@@ -1,20 +1,22 @@
 #include "shell.h"
 
 /**
- * builtin_exit - exit of the program with the status
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_exit - sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased status
+ * @data: stsdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased's data
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zero sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es arguments
  */
 int builtin_exit(data_of_program *data)
 {
-	int i;
+	int p;
 
 	if (data->tokens[1] != NULL)
-	{/*if exists arg for exit, check if is a number*/
-		for (i = 0; data->tokens[1][i]; i++)
-			if ((data->tokens[1][i] < '0' || data->tokens[1][i] > '9')
-				&& data->tokens[1][i] != '+')
-			{/*if is not a number*/
+	{/*sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es*/
+		for (p = 0; data->tokens[1][p]; p++)
+			if ((data->tokens[1][p] < '0' || data->tokens[1][p] > '9')
+				&& data->tokens[1][p] != '+')
+			{/*sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es*/
 				errno = 2;
 				return (2);
 			}
@@ -25,9 +27,11 @@ int builtin_exit(data_of_program *data)
 }
 
 /**
- * builtin_cd - change the current directory
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_cd - sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * @data: sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zersdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es arguments
  */
 int builtin_cd(data_of_program *data)
 {
@@ -63,10 +67,11 @@ int builtin_cd(data_of_program *data)
 }
 
 /**
- * set_work_directory - set the work directory
- * @data: struct for the program's data
- * @new_dir: path to be set as work directory
- * Return: zero if sucess, or other number if its declared in the arguments
+ * set_work_directory - sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * @data: stsdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es data
+ * @new_dir: pasdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esrectory
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zesdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es the arguments
  */
 int set_work_directory(data_of_program *data, char *new_dir)
 {
@@ -90,9 +95,10 @@ int set_work_directory(data_of_program *data, char *new_dir)
 }
 
 /**
- * builtin_help - shows the environment where the shell runs
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_help - ssdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esell runs
+ * @data: struct fosdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk ess data
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zerosdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es arguments
  */
 int builtin_help(data_of_program *data)
 {
@@ -121,7 +127,7 @@ int builtin_help(data_of_program *data)
 
 	for (i = 0; mensajes[i]; i++)
 	{
-		/*print the length of string */
+		/*sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es */
 		length = str_length(data->tokens[1]);
 		if (str_compare(data->tokens[1], mensajes[i], length))
 		{
@@ -129,31 +135,32 @@ int builtin_help(data_of_program *data)
 			return (1);
 		}
 	}
-	/*if there is no match, print error and return -1 */
+	/*sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es */
 	errno = EINVAL;
 	perror(data->command_name);
 	return (0);
 }
 
 /**
- * builtin_alias - add, remove or show aliases
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_alias - sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * @data: stsdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esata
+ * sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zesdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk es arguments
  */
 int builtin_alias(data_of_program *data)
 {
-	int i = 0;
+	int t = 0;
 
-	/* if there are no arguments, print all environment */
+	/* ifsdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esonment */
 	if (data->tokens[1] == NULL)
 		return (print_alias(data, NULL));
 
-	while (data->tokens[++i])
-	{/* if there are arguments, set or print each env variable*/
-		if (count_characters(data->tokens[i], "="))
-			set_alias(data->tokens[i], data);
+	while (data->tokens[++t])
+	{/* if sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esiable*/
+		if (count_characters(data->tokens[t], "="))
+			set_alias(data->tokens[t], data);
 		else
-			print_alias(data, data->tokens[i]);
+			print_alias(data, data->tokens[t]);
 	}
 
 	return (0);
