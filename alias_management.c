@@ -1,25 +1,23 @@
 #include "shell.h"
 
 /**
- * print_alias - DJSF GAS SA D SDHFKAJSH DF ASDFASD FAdfg dsf gdsfgdsfgsd fgS DFASDFA SV
- * @data:  DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
- * @alias: na DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFsdf dASDFA SVinted
- * Return: zero if DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV FDG HJDFGhe arguments
- * GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
- * GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
+ * print_alias - add, remove or show aliases
+ * @data: struct for the program's data
+ * @alias: name of the alias to be printed
+ * Return: zero if sucess, or other number if its declared in the arguments
  */
 int print_alias(data_of_program *data, char *alias)
 {
-	int i, j, alis_leng;   *************************************alias_length
+	int i, j, alias_length;
 	char buffer[250] = {'\0'};
 
 	if (data->alias_list)
 	{
-		alis_leng = str_length(alias);
+		alias_length = str_length(alias);
 		for (i = 0; data->alias_list[i]; i++)
 		{
-			if (!alias || (str_compare(data->alias_list[i], alias, alis_leng)
-				&&	data->alias_list[i][alis_leng] == '='))
+			if (!alias || (str_compare(data->alias_list[i], alias, alias_length)
+				&&	data->alias_list[i][alias_length] == '='))
 			{
 				for (j = 0; data->alias_list[i][j]; j++)
 				{
@@ -40,78 +38,75 @@ int print_alias(data_of_program *data, char *alias)
 }
 
 /**
- * get_alias - ad DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SVses
- * @data: struct DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV data
- * @name: name  DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV alias.
- * GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
- * Return: zero  DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV sxfdg sfdgg sduments
+ * get_alias - add, remove or show aliases
+ * @data: struct for the program's data
+ * @name: name of the requested alias.
+ * Return: zero if sucess, or other number if its declared in the arguments
  */
 char *get_alias(data_of_program *data, char *name)
 {
-	int i, alis_leng;
+	int i, alias_length;
 
-	/* v DJSF GAS SA D SDHFKAJSH DF ASDFASD FAS DFASDFA SV */
+	/* validate the arguments */
 	if (name == NULL || data->alias_list == NULL)
 		return (NULL);
 
-	alis_leng = str_length(name);
+	alias_length = str_length(name);
 
 	for (i = 0; data->alias_list[i]; i++)
-	{/* Isdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfg dfgdf e */
-		if (str_compare(name, data->alias_list[i], alis_leng) &&
-			data->alias_list[i][alis_leng] == '=')
-		{/* returns tIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgind it */
-			return (data->alias_list[i] + alis_leng + 1);
+	{/* Iterates through the environ and check for coincidence of the varname */
+		if (str_compare(name, data->alias_list[i], alias_length) &&
+			data->alias_list[i][alias_length] == '=')
+		{/* returns the value of the key NAME=  when find it */
+			return (data->alias_list[i] + alias_length + 1);
 		}
 	}
-	/* rIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgit */
+	/* returns NULL if did not find it */
 	return (NULL);
 
 }
 
 /**
- * set_alias - aIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfg
- * @alias_string: alIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfg
- * @data: struIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgta
- * GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
- * GAS SA D SDHFKAJSH DF ASDFASD FAS D dfg sdfg dfgFASDFA SV
- * Return: zero Isdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfguments
+ * set_alias - add, or override alias
+ * @alias_string: alias to be seted in the form (name='value')
+ * @data: struct for the program's data
+ * Return: zero if sucess, or other number if its declared in the arguments
  */
 int set_alias(char *alias_string, data_of_program *data)
 {
 	int i, j;
 	char buffer[250] = {'0'}, *temp = NULL;
 
-	/* vIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgs */
+	/* validate the arguments */
 	if (alias_string == NULL ||  data->alias_list == NULL)
 		return (1);
-	/* ItIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgar */
+	/* Iterates alias to find = char */
 	for (i = 0; alias_string[i]; i++)
 		if (alias_string[i] != '=')
 			buffer[i] = alias_string[i];
 		else
-		{/* searIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfglias */
+		{/* search if the value of the alias is another alias */
 			temp = get_alias(data, alias_string + i + 1);
 			break;
 		}
 
-	/* IIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgname */
+	/* Iterates through the alias list and check for coincidence of the varname */
 	for (j = 0; data->alias_list[j]; j++)
 		if (str_compare(buffer, data->alias_list[j], i) &&
 			data->alias_list[j][i] == '=')
-		{/* Isdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgst */
+		{/* if the alias alredy exist */
 			free(data->alias_list[j]);
 			break;
 		}
 
-	/* Isdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfg */
+	/* add the alias */
 	if (temp)
-	{/* ifIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgst */
+	{/* if the alias already exist */
 		buffer_add(buffer, "=");
 		buffer_add(buffer, temp);
 		data->alias_list[j] = str_duplicate(buffer);
 	}
-	else /* ifIsdf ghsldf dkfhg sfdg sdf gsdkfg sdkfg sdf gsdlf gsdf gsdf gdsf gdfgist */
+	else /* if the alias does not exist */
 		data->alias_list[j] = str_duplicate(alias_string);
 	return (0);
 }
