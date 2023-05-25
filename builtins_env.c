@@ -1,45 +1,48 @@
 #include "shell.h"
 
 /**
- * builtin_env - shows the environment where the shell runs
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_env - shows sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * @data:  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es data
+ * sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * Return: zero  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es sdfgsdf d
  */
 int builtin_env(data_of_program *data)
 {
 	int i;
-	char cpname[50] = {'\0'};
+	char kvnum[50] = {'\0'};
 	char *var_copy = NULL;
 
-	/* if not arguments */
+	/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
 	if (data->tokens[1] == NULL)
 		print_environ(data);
 	else
 	{
 		for (i = 0; data->tokens[1][i]; i++)
-		{/* checks if exists a char = */
+		{/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es char = */
 			if (data->tokens[1][i] == '=')
-			{/* checks if exists a var with the same name and change its value*/
-			/* temporally */
-				var_copy = str_duplicate(env_get_key(cpname, data));
+			{/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es value*/
+			/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
+				var_copy = str_duplicate(env_get_key(kvnum, data));
 				if (var_copy != NULL)
-					env_set_key(cpname, data->tokens[1] + i + 1, data);
+					env_set_key(kvnum, data->tokens[1] + i + 1, data);
 
-				/* print the environ */
+				/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
 				print_environ(data);
-				if (env_get_key(cpname, data) == NULL)
-				{/* print the variable if it does not exist in the environ */
+				if (env_get_key(kvnum, data) == NULL)
+				{/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
 					_print(data->tokens[1]);
 					_print("\n");
 				}
 				else
-				{/* returns the old value of the var*/
-					env_set_key(cpname, var_copy, data);
+				{/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
+					env_set_key(kvnum, var_copy, data);
 					free(var_copy);
 				}
 				return (0);
 			}
-			cpname[i] = data->tokens[1][i];
+			kvnum[i] = data->tokens[1][i];
 		}
 		errno = 2;
 		perror(data->command_name);
@@ -49,13 +52,14 @@ int builtin_env(data_of_program *data)
 }
 
 /**
- * builtin_set_env - ..
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_set_env -  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * @data: s sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk esam's data
+ * sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * Return: ze sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es n the arguments
  */
 int builtin_set_env(data_of_program *data)
 {
-	/* validate args */
+	/*  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es */
 	if (data->tokens[1] == NULL || data->tokens[2] == NULL)
 		return (0);
 	if (data->tokens[3] != NULL)
@@ -71,13 +75,14 @@ int builtin_set_env(data_of_program *data)
 }
 
 /**
- * builtin_unset_env - ..
- * @data: struct for the program's data'
- * Return: ..
+ * builtin_unset_env - sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * @data:  sdf asdlkjf asdfj asdkjf l asjdf asdfj lasdjfased fjaseldk esdata'
+ * sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
+ * Return:  sdf asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased fjaseldk es
  */
 int builtin_unset_env(data_of_program *data)
 {
-	/* validate args */
+	/* asdlkjf asdfj asdkjf;l asjdf asdfj lasdjfased */
 	if (data->tokens[1] == NULL)
 		return (0);
 	if (data->tokens[2] != NULL)
