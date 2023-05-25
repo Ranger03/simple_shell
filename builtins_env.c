@@ -1,18 +1,15 @@
 #include "shell.h"
 
 /**
- * builtin_env - dsad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * @data: sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l data
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * Return: zersad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lrguments
+ * builtin_env - shows the environment where the shell runs
+ * @data: struct for the program's data
+ * Return: zero if sucess, or other number if its declared in the arguments
  */
 int builtin_env(data_of_program *data)
 {
 	int i;
-	char kvnamu[50] = {'\0'}; **************************************cpname
-	char *rav_cpi = NULL;     **************************************var_copy
+	char cpname[50] = {'\0'};
+	char *var_copy = NULL;
 
 	/* if not arguments */
 	if (data->tokens[1] == NULL)
@@ -22,27 +19,27 @@ int builtin_env(data_of_program *data)
 		for (i = 0; data->tokens[1][i]; i++)
 		{/* checks if exists a char = */
 			if (data->tokens[1][i] == '=')
-			{/* csad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf le*/
-			/* tesad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf ly */
-				rav_cpi = str_duplicate(env_get_key(kvnamu, data));
-				if (rav_cpi != NULL)
-					env_set_key(kvnamu, data->tokens[1] + i + 1, data);
+			{/* checks if exists a var with the same name and change its value*/
+			/* temporally */
+				var_copy = str_duplicate(env_get_key(cpname, data));
+				if (var_copy != NULL)
+					env_set_key(cpname, data->tokens[1] + i + 1, data);
 
-				/* psad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lon */
+				/* print the environ */
 				print_environ(data);
-				if (env_get_key(kvnamu, data) == NULL)
-				{/* prisad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lon */
+				if (env_get_key(cpname, data) == NULL)
+				{/* print the variable if it does not exist in the environ */
 					_print(data->tokens[1]);
 					_print("\n");
 				}
 				else
-				{/* resad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lr*/
-					env_set_key(kvnamu, rav_cpi, data);
-					free(rav_cpi);
+				{/* returns the old value of the var*/
+					env_set_key(cpname, var_copy, data);
+					free(var_copy);
 				}
 				return (0);
 			}
-			kvnamu[i] = data->tokens[1][i];
+			cpname[i] = data->tokens[1][i];
 		}
 		errno = 2;
 		perror(data->command_name);
@@ -53,14 +50,12 @@ int builtin_env(data_of_program *data)
 
 /**
  * builtin_set_env - ..
- * @data: ssad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lta
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * Return: zsad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lsad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf le arguments
+ * @data: struct for the program's data
+ * Return: zero if sucess, or other number if its declared in the arguments
  */
 int builtin_set_env(data_of_program *data)
 {
-	/* vsad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l */
+	/* validate args */
 	if (data->tokens[1] == NULL || data->tokens[2] == NULL)
 		return (0);
 	if (data->tokens[3] != NULL)
@@ -77,13 +72,12 @@ int builtin_set_env(data_of_program *data)
 
 /**
  * builtin_unset_env - ..
- * @data: sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lta'
- * sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
- * Return: sad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf l
+ * @data: struct for the program's data'
+ * Return: ..
  */
 int builtin_unset_env(data_of_program *data)
 {
-	/* vasad gfskjdf skdf fsdkfosacnahlhjdlkfsl s  sdjkfjlsdfs sd dkflsdl sdf lgs */
+	/* validate args */
 	if (data->tokens[1] == NULL)
 		return (0);
 	if (data->tokens[2] != NULL)
