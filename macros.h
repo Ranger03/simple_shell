@@ -1,16 +1,16 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
-/* sakdl fakls dflaksd flasd */
-#define PROMPT_MSG "dali<3 " /* asd hfalkjshd lja lksjhd fahsd falsdk fasdh ka sdkfha dfajhd fasdkl fasd */
+/* Prompt to be printed */
+#define PROMPT_MSG "dali<3 " /* Needed to work with signal */
 
-/* sadbflka sdjkfalksdfalkjhdf lkahdfl ka hsdfhaslkd e */
+/* Resume from the unused attibute */
 #define UNUSED __attribute__((unused))
 
-/* a sdhlfkjahsldkjf alksjdh kaj dkajsld kjhf alkjsdhlfka dfklajhsd */
+/* buffer size for each read call in _getline */
 #define BUFFER_SIZE 1024
 
-/**************************************************** FORMATTED STRING FOR HELP BUILT IN ******************************************************************/
+/************* FORMATTED STRING FOR HELP BUILT IN **************/
 
 #define HELP_CD_MSG "cd=\n"\
 "cd:\tcd [dir]\n\n"\
