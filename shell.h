@@ -13,11 +13,11 @@
 #include <signal.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffment */
 #include <fcntl.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffles*/
 
-/************* MACROS **************/
+/***************************************** MACROS *****************************************/
 
 #include "macros.h" /* fosk alskd aldaksd ad asdkaldfa ahd sd s ffmpt */
 
-/************* STRUCTURES **************/
+/***************************************** STRUCTURES *****************************************/
 
 /**
  * struct info- stsk alskd aldaksd ad asdkaldfa ahd sd s ffata
@@ -54,10 +54,10 @@ typedef struct builtins
 } builtins;
 
 
-/************* MAIN FUNCTIONS *************/
+/***************************************** MAIN FUNCTIONS *****************************************/
 
 
-/*========  shell.c  ========*/
+/*======================================  shell.c  ======================================*/
 
 /* Inisk alskd aldaksd ad asdkaldfa ahd sd s ffram */
 void inicialize_data(data_of_program *data, int arc, char *argv[], char **env);
@@ -69,7 +69,7 @@ void sisifo(char *prompt, data_of_program *data);
 void handle_ctrl_c(int opr UNUSED);
 
 
-/*========  _getline.c  ========*/
+/*======================================  _getline.c  ======================================*/
 
 /* Rsk alskd aldaksd ad asdkaldfa ahd sd s ffut*/
 int _getline(data_of_program *data);
@@ -78,7 +78,7 @@ int _getline(data_of_program *data);
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
 
 
-/*======== expansions.c ========*/
+/*====================================== expansions.c ======================================*/
 
 /* exsk alskd aldaksd ad asdkaldfa ahd sd s ffs */
 void expand_variables(data_of_program *data);
@@ -90,7 +90,7 @@ void expand_alias(data_of_program *data);
 int buffer_add(char *buffer, char *str_to_add);
 
 
-/*======== str_tok.c ========*/
+/*====================================== str_tok.c ======================================*/
 
 /* Sesk alskd aldaksd ad asdkaldfa ahd sd s ffimiter */
 void tokenize(data_of_program *data);
@@ -99,19 +99,19 @@ void tokenize(data_of_program *data);
 char *_strtok(char *line, char *delim);
 
 
-/*======== execute.c ========*/
+/*====================================== execute.c ======================================*/
 
 /* Exsk alskd aldaksd ad asdkaldfa ahd sd s ffath */
 int execute(data_of_program *data);
 
 
-/*======== builtins_list.c ========*/
+/*====================================== builtins_list.c ======================================*/
 
 /* If msk alskd aldaksd ad asdkaldfa ahd sd s fftes it */
 int builtins_list(data_of_program *data);
 
 
-/*======== find_in_path.c ========*/
+/*====================================== find_in_path.c ======================================*/
 
 /* Creatsk alskd aldaksd ad asdkaldfa ahd sd s ffries */
 char **tokenize_path(data_of_program *data);
@@ -120,10 +120,10 @@ char **tokenize_path(data_of_program *data);
 int find_program(data_of_program *data);
 
 
-/************** HELPERS FOR MEMORY MANAGEMENT **************/
+/***************************************** HELPERS FOR MEMORY MANAGEMENT *****************************************/
 
 
-/*======== helpers_free.c ========*/
+/*====================================== helpers_free.c ======================================*/
 
 /* Fresk alskd aldaksd ad asdkaldfa ahd sd s ffries */
 void free_array_of_pointers(char **directories);
@@ -135,10 +135,10 @@ void free_recurrent_data(data_of_program *data);
 void free_all_data(data_of_program *data);
 
 
-/************** BUILTINS **************/
+/***************************************** BUILTINS *****************************************/
 
 
-/*======== builtins_more.c ========*/
+/*====================================== builtins_more.c ======================================*/
 
 /* Clsk alskd aldaksd ad asdkaldfa ahd sd s ffl */
 int builtin_exit(data_of_program *data);
@@ -156,7 +156,7 @@ int builtin_help(data_of_program *data);
 int builtin_alias(data_of_program *data);
 
 
-/*======== builtins_env.c ========*/
+/*====================================== builtins_env.c ======================================*/
 
 /* Showsk alskd aldaksd ad asdkaldfa ahd sd s ffns */
 int builtin_env(data_of_program *data);
@@ -168,10 +168,10 @@ int builtin_set_env(data_of_program *data);
 int builtin_unset_env(data_of_program *data);
 
 
-/************** HELPERS FOR ENVIRONMENT VARIABLES MANAGEMENT **************/
+/***************************************** HELPERS FOR ENVIRONMENT VARIABLES MANAGEMENT *****************************************/
 
 
-/*======== env_management.c ========*/
+/*====================================== env_management.c ======================================*/
 
 /* Getsk alskd aldaksd ad asdkaldfa ahd sd s ffiable */
 char *env_get_key(char *name, data_of_program *data);
@@ -186,10 +186,10 @@ int env_remove_key(char *key, data_of_program *data);
 void print_environ(data_of_program *data);
 
 
-/************** HELPERS FOR PRINTING **************/
+/***************************************** HELPERS FOR PRINTING *****************************************/
 
 
-/*======== helpers_print.c ========*/
+/*====================================== helpers_print.c ======================================*/
 
 /* Prisk alskd aldaksd ad asdkaldfa ahd sd s ffut */
 int _print(char *string);
@@ -201,10 +201,10 @@ int _printe(char *string);
 int _print_error(int errorcode, data_of_program *data);
 
 
-/************** HELPERS FOR STRINGS MANAGEMENT **************/
+/***************************************** HELPERS FOR STRINGS MANAGEMENT *****************************************/
 
 
-/*======== helpers_string.c ========*/
+/*====================================== helpers_string.c ======================================*/
 
 /* Cosk alskd aldaksd ad asdkaldfa ahd sd s ffing */
 int str_length(char *string);
@@ -222,7 +222,7 @@ char *str_concat(char *string1, char *string2);
 void str_reverse(char *string);
 
 
-/*======== helpers_numbers.c ========*/
+/*====================================== helpers_numbers.c ======================================*/
 
 /* Csk alskd aldaksd ad asdkaldfa ahd sd s ffring */
 void long_to_string(long number, char *string, int base);
@@ -234,7 +234,7 @@ int _atoi(char *s);
 int count_characters(char *string, char *character);
 
 
-/*======== alias_management.c ========*/
+/*====================================== alias_management.c ======================================*/
 
 /* prsk alskd aldaksd ad asdkaldfa ahd sd s ffas */
 int print_alias(data_of_program *data, char *alias);
