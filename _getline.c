@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
-* _getline - prompt read line.
-* @data: program data struct
+* _getline - sadfh asdhf asdhf asd asl.
+* @data: asdfa sdlf aaer asd
 *
-* Return: byete reading conunt.
+* Return: asdf asd aioeaq nt.
 */
 int _getline(data_of_program *data)
 {
@@ -13,12 +13,12 @@ int _getline(data_of_program *data)
 	static char array_operators[10] = {'\0'};
 	ssize_t bytes_read, i = 0;
 
-	/* commands do do not exit */
-	/* logic ops checkers */
+	/* cdsakfhl sdfhal da t */
+	/* asdf asd asdf as */
 	if (!array_commands[0] || (array_operators[0] == '&' && errno != 0) ||
 		(array_operators[0] == '|' && errno == 0))
 	{
-		/*makse space for memory in arr */
+		/*asd fasdfas df asdf r */
 		for (i = 0; array_commands[i]; i++)
 		{
 			free(array_commands[i]);
