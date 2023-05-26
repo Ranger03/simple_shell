@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * builtin_env - shows the environment where the shell runs
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_env - sdf sgsdf sdgh dfg sfghsd sdf ns
+ * @data: s dahsrtj sg hsdf gadfta
+ * Return: zero sjfg hsdf garfdhj satuj fafhants
  */
 int builtin_env(data_of_program *data)
 {
@@ -17,23 +17,23 @@ int builtin_env(data_of_program *data)
 	else
 	{
 		for (i = 0; data->tokens[1][i]; i++)
-		{/* checks if exists a char = */
+		{/* chf dhfghsjs fsar = */
 			if (data->tokens[1][i] == '=')
-			{/* checks if exists a var with the same name and change its value*/
-			/* temporally */
+			{/* ch sdfhfgjs dfgsadfh sdft guwsgdg dfge*/
+			/* ts dfgjly */
 				var_copy = str_duplicate(env_get_key(cpname, data));
 				if (var_copy != NULL)
 					env_set_key(cpname, data->tokens[1] + i + 1, data);
 
-				/* print the environ */
+				/* p sdfgjfdg hsdn */
 				print_environ(data);
 				if (env_get_key(cpname, data) == NULL)
-				{/* print the variable if it does not exist in the environ */
+				{/* p sghjshsd hdfghs ron */
 					_print(data->tokens[1]);
 					_print("\n");
 				}
 				else
-				{/* returns the old value of the var*/
+				{/* returns ts dfghgfh sdf fgr*/
 					env_set_key(cpname, var_copy, data);
 					free(var_copy);
 				}
@@ -50,12 +50,12 @@ int builtin_env(data_of_program *data)
 
 /**
  * builtin_set_env - ..
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * @data: s sdghs dfghs gata
+ * Return: zer sdfghjsfgj fsdg hdfhgjs gs g hjsg uments
  */
 int builtin_set_env(data_of_program *data)
 {
-	/* validate args */
+	/* v dfgjsf gjgs */
 	if (data->tokens[1] == NULL || data->tokens[2] == NULL)
 		return (0);
 	if (data->tokens[3] != NULL)
@@ -72,12 +72,12 @@ int builtin_set_env(data_of_program *data)
 
 /**
  * builtin_unset_env - ..
- * @data: struct for the program's data'
+ * @data: st sgd jfgj sdfg jstga'
  * Return: ..
  */
 int builtin_unset_env(data_of_program *data)
 {
-	/* validate args */
+	/* v sdgfj dfgjsggs */
 	if (data->tokens[1] == NULL)
 		return (0);
 	if (data->tokens[2] != NULL)
