@@ -1,34 +1,34 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <stdio.h> /* for printf*/
-#include <unistd.h> /* for fork, execve*/
+#include <stdio.h> /* ask alskd aldaksd ad asdkaldfa ahd sd s ff*/
+#include <unistd.h> /* fosk alskd aldaksd ad asdkaldfa ahd sd s ffe*/
 #include <stdlib.h>
-#include <string.h> /* for strtok*/
+#include <string.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffok*/
 #include <stddef.h>
-#include <errno.h> /* for errno and perror */
-#include <sys/types.h> /* for type pid */
-#include <sys/wait.h> /* for wait */
-#include <sys/stat.h> /* for use of stat function */
-#include <signal.h> /* for signal management */
-#include <fcntl.h> /* for open files*/
+#include <errno.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffor */
+#include <sys/types.h> /* fosk alskd aldaksd ad asdkaldfa ahd sd s ffd */
+#include <sys/wait.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s fft */
+#include <sys/stat.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffnction */
+#include <signal.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffment */
+#include <fcntl.h> /* fsk alskd aldaksd ad asdkaldfa ahd sd s ffles*/
 
 /************* MACROS **************/
 
-#include "macros.h" /* for msg help and prompt */
+#include "macros.h" /* fosk alskd aldaksd ad asdkaldfa ahd sd s ffmpt */
 
 /************* STRUCTURES **************/
 
 /**
- * struct info- struct for the program's data
- * @program_name: the name of the executable
- * @input_line: pointer to the input read for _getline
- * @command_name: pointer to the first command typed by the user
- * @exec_counter: number of excecuted comands
- * @file_descriptor: file descriptor to the input of commands
- * @tokens: pointer to array of tokenized input
- * @env: copy of the environ
- * @alias_list: array of pointers with aliases.
+ * struct info- stsk alskd aldaksd ad asdkaldfa ahd sd s ffata
+ * @program_name: tsk alskd aldaksd ad asdkaldfa ahd sd s fftable
+ * @input_line: posk alskd aldaksd ad asdkaldfa ahd sd s ffetline
+ * @command_name: psk alskd aldaksd ad asdkaldfa ahd sd s ff the user
+ * @exec_counter: nusk alskd aldaksd ad asdkaldfa ahd sd s ffnds
+ * @file_descriptor: fsk alskd aldaksd ad asdkaldfa ahd sd s ffcommands
+ * @tokens: posk alskd aldaksd ad asdkaldfa ahd sd s ff input
+ * @env: copsk alskd aldaksd ad asdkaldfa ahd sd s ffn
+ * @alias_list: arsk alskd aldaksd ad asdkaldfa ahd sd s ffses.
  */
 typedef struct info
 {
@@ -43,9 +43,9 @@ typedef struct info
 } data_of_program;
 
 /**
- * struct builtins - struct for the builtins
- * @builtin: the name of the builtin
- * @function: the associated function to be called for each builtin
+ * struct builtins - stsk alskd aldaksd ad asdkaldfa ahd sd s ffins
+ * @builtin: tsk alskd aldaksd ad asdkaldfa ahd sd s fftin
+ * @function: thsk alskd aldaksd ad asdkaldfa ahd sd s fftin
  */
 typedef struct builtins
 {
@@ -59,64 +59,64 @@ typedef struct builtins
 
 /*========  shell.c  ========*/
 
-/* Inicialize the struct with the info of the program */
+/* Inisk alskd aldaksd ad asdkaldfa ahd sd s ffram */
 void inicialize_data(data_of_program *data, int arc, char *argv[], char **env);
 
-/* Makes the infinite loop that shows the prompt*/
+/* Msk alskd aldaksd ad asdkaldfa ahd sd s ff prompt*/
 void sisifo(char *prompt, data_of_program *data);
 
-/* Print the prompt in a new line */
+/* Psk alskd aldaksd ad asdkaldfa ahd sd s ffe */
 void handle_ctrl_c(int opr UNUSED);
 
 
 /*========  _getline.c  ========*/
 
-/* Read one line of the standar input*/
+/* Rsk alskd aldaksd ad asdkaldfa ahd sd s ffut*/
 int _getline(data_of_program *data);
 
-/* split the each line for the logical operators if it exist */
+/* ssk alskd aldaksd ad asdkaldfa ahd sd s ffst */
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
 
 
 /*======== expansions.c ========*/
 
-/* expand variables */
+/* exsk alskd aldaksd ad asdkaldfa ahd sd s ffs */
 void expand_variables(data_of_program *data);
 
-/* expand aliases */
+/* exsk alskd aldaksd ad asdkaldfa ahd sd s ffs */
 void expand_alias(data_of_program *data);
 
-/* append the string to the end of the buffer*/
+/* ask alskd aldaksd ad asdkaldfa ahd sd s ffffer*/
 int buffer_add(char *buffer, char *str_to_add);
 
 
 /*======== str_tok.c ========*/
 
-/* Separate the string in tokens using a designed delimiter */
+/* Sesk alskd aldaksd ad asdkaldfa ahd sd s ffimiter */
 void tokenize(data_of_program *data);
 
-/* Creates a pointer to a part of a string */
+/* Crsk alskd aldaksd ad asdkaldfa ahd sd s ffng */
 char *_strtok(char *line, char *delim);
 
 
 /*======== execute.c ========*/
 
-/* Execute a command with its entire path */
+/* Exsk alskd aldaksd ad asdkaldfa ahd sd s ffath */
 int execute(data_of_program *data);
 
 
 /*======== builtins_list.c ========*/
 
-/* If match a builtin, executes it */
+/* If msk alskd aldaksd ad asdkaldfa ahd sd s fftes it */
 int builtins_list(data_of_program *data);
 
 
 /*======== find_in_path.c ========*/
 
-/* Creates an array of the path directories */
+/* Creatsk alskd aldaksd ad asdkaldfa ahd sd s ffries */
 char **tokenize_path(data_of_program *data);
 
-/* Search for program in path */
+/* Searsk alskd aldaksd ad asdkaldfa ahd sd s ffh */
 int find_program(data_of_program *data);
 
 
@@ -125,13 +125,13 @@ int find_program(data_of_program *data);
 
 /*======== helpers_free.c ========*/
 
-/* Frees the memory for directories */
+/* Fresk alskd aldaksd ad asdkaldfa ahd sd s ffries */
 void free_array_of_pointers(char **directories);
 
-/* Free the fields needed each loop */
+/* Free thesk alskd aldaksd ad asdkaldfa ahd sd s ffop */
 void free_recurrent_data(data_of_program *data);
 
-/* Free all field of the data */
+/* Fsk alskd aldaksd ad asdkaldfa ahd sd s ffdata */
 void free_all_data(data_of_program *data);
 
 
@@ -140,31 +140,31 @@ void free_all_data(data_of_program *data);
 
 /*======== builtins_more.c ========*/
 
-/* Close the shell */
+/* Clsk alskd aldaksd ad asdkaldfa ahd sd s ffl */
 int builtin_exit(data_of_program *data);
 
-/* Change the current directory */
+/* Csk alskd aldaksd ad asdkaldfa ahd sd s ffry */
 int builtin_cd(data_of_program *data);
 
-/* set the work directory */
+/* setsk alskd aldaksd ad asdkaldfa ahd sd s ffy */
 int set_work_directory(data_of_program *data, char *new_dir);
 
-/* show help information */
+/* shsk alskd aldaksd ad asdkaldfa ahd sd s ffion */
 int builtin_help(data_of_program *data);
 
-/* set, unset and show alias */
+/* sesk alskd aldaksd ad asdkaldfa ahd sd s ffas */
 int builtin_alias(data_of_program *data);
 
 
 /*======== builtins_env.c ========*/
 
-/* Shows the environment where the shell runs */
+/* Showsk alskd aldaksd ad asdkaldfa ahd sd s ffns */
 int builtin_env(data_of_program *data);
 
-/* create or override a variable of environment */
+/* creatsk alskd aldaksd ad asdkaldfa ahd sd s ffent */
 int builtin_set_env(data_of_program *data);
 
-/* delete a variable of environment */
+/* desk alskd aldaksd ad asdkaldfa ahd sd s ffent */
 int builtin_unset_env(data_of_program *data);
 
 
@@ -173,16 +173,16 @@ int builtin_unset_env(data_of_program *data);
 
 /*======== env_management.c ========*/
 
-/* Gets the value of an environment variable */
+/* Getsk alskd aldaksd ad asdkaldfa ahd sd s ffiable */
 char *env_get_key(char *name, data_of_program *data);
 
-/* Overwrite the value of the environment variable */
+/* Overwsk alskd aldaksd ad asdkaldfa ahd sd s ffble */
 int env_set_key(char *key, char *value, data_of_program *data);
 
-/* Remove a key from the environment */
+/* Resk alskd aldaksd ad asdkaldfa ahd sd s ffonment */
 int env_remove_key(char *key, data_of_program *data);
 
-/* prints the current environ */
+/* prisk alskd aldaksd ad asdkaldfa ahd sd s ffon */
 void print_environ(data_of_program *data);
 
 
@@ -191,13 +191,13 @@ void print_environ(data_of_program *data);
 
 /*======== helpers_print.c ========*/
 
-/* Prints a string in the standar output */
+/* Prisk alskd aldaksd ad asdkaldfa ahd sd s ffut */
 int _print(char *string);
 
-/* Prints a string in the standar error */
+/* Prisk alskd aldaksd ad asdkaldfa ahd sd s ffror */
 int _printe(char *string);
 
-/* Prints a string in the standar error */
+/* Prinsk alskd aldaksd ad asdkaldfa ahd sd s ffor */
 int _print_error(int errorcode, data_of_program *data);
 
 
@@ -206,44 +206,44 @@ int _print_error(int errorcode, data_of_program *data);
 
 /*======== helpers_string.c ========*/
 
-/* Counts the number of characters of a string */
+/* Cosk alskd aldaksd ad asdkaldfa ahd sd s ffing */
 int str_length(char *string);
 
-/* Duplicates an string */
+/* Dsk alskd aldaksd ad asdkaldfa ahd sd s ffng */
 char *str_duplicate(char *string);
 
-/* Compares two strings */
+/* Comsk alskd aldaksd ad asdkaldfa ahd sd s ff */
 int str_compare(char *string1, char *string2, int number);
 
-/* Concatenates two strings */
+/* Consk alskd aldaksd ad asdkaldfa ahd sd s ffgs */
 char *str_concat(char *string1, char *string2);
 
-/* Reverse a string */
+/* Revesk alskd aldaksd ad asdkaldfa ahd sd s ffng */
 void str_reverse(char *string);
 
 
 /*======== helpers_numbers.c ========*/
 
-/* Cast from int to string */
+/* Csk alskd aldaksd ad asdkaldfa ahd sd s ffring */
 void long_to_string(long number, char *string, int base);
 
-/* convert an string in to a number */
+/* cosk alskd aldaksd ad asdkaldfa ahd sd s ffber */
 int _atoi(char *s);
 
-/* count the coincidences of character in string */
+/* cosk alskd aldaksd ad asdkaldfa ahd sd s ffing */
 int count_characters(char *string, char *character);
 
 
 /*======== alias_management.c ========*/
 
-/* print the list of alias */
+/* prsk alskd aldaksd ad asdkaldfa ahd sd s ffas */
 int print_alias(data_of_program *data, char *alias);
 
-/* get the alias name */
+/* gsk alskd aldaksd ad asdkaldfa ahd sd s ffme */
 char *get_alias(data_of_program *data, char *alias);
 
-/* set the alias name */
+/* ssk alskd aldaksd ad asdkaldfa ahd sd s ffme */
 int set_alias(char *alias_string, data_of_program *data);
 
 
-#endif /* SHELL_H */
+#endif /* sak asdfh */
