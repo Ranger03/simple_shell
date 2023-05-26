@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * main - initialize the variables of the program
- * @argc: number of values received from the command line
- * @argv: values received from the command line
- * @env: number of values received from the command line
- * Return: zero on succes.
+ * main - asjd fasdgfad as dkjfasd kfa skd faksda ksdfak 
+ * @argc: nasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ine
+ * @argv: vaasjd fasdgfad as dkjfasd kfa skd faksda ksdfak e
+ * @env: nuasjd fasdgfad as dkjfasd kfa skd faksda ksdfak nd line
+ * Return: zasjd fasdgfad as dkjfasd kfa skd faksda ksdfak es.
  */
 int main(int argc, char *argv[], char *env[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[], char *env[])
 	signal(SIGINT, handle_ctrl_c);
 
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
-	{/* We are in the terminal, interactive mode */
+	{/* Wasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ode */
 		errno = 2;/*???????*/
 		prompt = PROMPT_MSG;
 	}
@@ -26,9 +26,9 @@ int main(int argc, char *argv[], char *env[])
 }
 
 /**
- * handle_ctrl_c - print the prompt in a new line
- * when the signal SIGINT (ctrl + c) is send to the program
- * @UNUSED: option of the prototype
+ * handle_ctrl_c - pasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ne
+ * whasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ogram
+ * @UNUSED: oasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ype
  */
 void handle_ctrl_c(int opr UNUSED)
 {
@@ -37,11 +37,11 @@ void handle_ctrl_c(int opr UNUSED)
 }
 
 /**
- * inicialize_data - inicialize the struct with the info of the program
- * @data: pointer to the structure of data
- * @argv: array of arguments pased to the program execution
- * @env: environ pased to the program execution
- * @argc: number of values received from the command line
+ * inicialize_data - inasjd fasdgfad as dkjfasd kfa skd faksda ksdfak gram
+ * @data: poiasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ta
+ * @argv: aasjd fasdgfad as dkjfasd kfa skd faksda ksdfak tion
+ * @env: envasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ution
+ * @argc: nuasjd fasdgfad as dkjfasd kfa skd faksda ksdfak nd line
  */
 void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 {
@@ -51,7 +51,7 @@ void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 	data->input_line = NULL;
 	data->command_name = NULL;
 	data->exec_counter = 0;
-	/* define the file descriptor to be readed*/
+	/* deasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ded*/
 	if (argc == 1)
 		data->file_descriptor = STDIN_FILENO;
 	else
@@ -85,9 +85,9 @@ void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 	}
 }
 /**
- * sisifo - its a infinite loop that shows the prompt
- * @prompt: prompt to be printed
- * @data: its a infinite loop that shows the prompt
+ * sisifo - iasjd fasdgfad as dkjfasd kfa skd faksda ksdfak mpt
+ * @prompt: pasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ed
+ * @data: itasjd fasdgfad as dkjfasd kfa skd faksda ksdfak mpt
  */
 void sisifo(char *prompt, data_of_program *data)
 {
@@ -101,7 +101,7 @@ void sisifo(char *prompt, data_of_program *data)
 		if (error_code == EOF)
 		{
 			free_all_data(data);
-			exit(errno); /* if EOF is the fisrt Char of string, exit*/
+			exit(errno); /* iasjd fasdgfad as dkjfasd kfa skd faksda ksdfak xit*/
 		}
 		if (string_len >= 1)
 		{
@@ -109,7 +109,7 @@ void sisifo(char *prompt, data_of_program *data)
 			expand_variables(data);
 			tokenize(data);
 			if (data->tokens[0])
-			{ /* if a text is given to prompt, execute */
+			{ /* iasjd fasdgfad as dkjfasd kfa skd faksda ksdfak ute */
 				error_code = execute(data);
 				if (error_code != 0)
 					_print_error(error_code, data);
