@@ -1,34 +1,34 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <stdio.h> /* for printf*/
-#include <unistd.h> /* for fork, execve*/
+#include <stdio.h> /* asdfj asdf kalsdfhal hea dfkhasdfh iaudf*/
+#include <unistd.h> /* ffj asdf kalsdfhal hea dfkhasdfh iaudfve*/
 #include <stdlib.h>
-#include <string.h> /* for strtok*/
+#include <string.h> /* ffj asdf kalsdfhal hea dfkhasdfh iaudfk*/
 #include <stddef.h>
-#include <errno.h> /* for errno and perror */
-#include <sys/types.h> /* for type pid */
-#include <sys/wait.h> /* for wait */
-#include <sys/stat.h> /* for use of stat function */
-#include <signal.h> /* for signal management */
-#include <fcntl.h> /* for open files*/
+#include <errno.h> /* forfj asdf kalsdfhal hea dfkhasdfh iaudferror */
+#include <sys/types.h> /* ffj asdf kalsdfhal hea dfkhasdfh iaudfd */
+#include <sys/wait.h> /* fofj asdf kalsdfhal hea dfkhasdfh iaudfait */
+#include <sys/stat.h> /* ffj asdf kalsdfhal hea dfkhasdfh iaudftion */
+#include <signal.h> /* fofj asdf kalsdfhal hea dfkhasdfh iaudfent */
+#include <fcntl.h> /* fofj asdf kalsdfhal hea dfkhasdfh iaudfles*/
 
-/************* MACROS **************/
+/**************************************************** MACROS ******************************************************************/
 
-#include "macros.h" /* for msg help and prompt */
+#include "macros.h" /* fofj asdf kalsdfhal hea dfkhasdfh iaudfpt */
 
-/************* STRUCTURES **************/
+/******************************************************* STRUCTURES *****************************************************/
 
 /**
- * struct info- struct for the program's data
- * @program_name: the name of the executable
- * @input_line: pointer to the input read for _getline
- * @command_name: pointer to the first command typed by the user
- * @exec_counter: number of excecuted comands
- * @file_descriptor: file descriptor to the input of commands
- * @tokens: pointer to array of tokenized input
- * @env: copy of the environ
- * @alias_list: array of pointers with aliases.
+ * struct info- strfj asdf kalsdfhal hea dfkhasdfh iaudf ogram's data
+ * @program_name: thefj asdf kalsdfhal hea dfkhasdfh iaudf ecutable
+ * @input_line: poifj asdf kalsdfhal hea dfkhasdfh iaudf tline
+ * @command_name: poinfj asdf kalsdfhal hea dfkhasdfh iaudf user
+ * @exec_counter: numfj asdf kalsdfhal hea dfkhasdfh iaudfands
+ * @file_descriptor: ffj asdf kalsdfhal hea dfkhasdfh iaudfmmands
+ * @tokens: pointer tofj asdf kalsdfhal hea dfkhasdfh iaudf ut
+ * @env: cfj asdf kalsdfhal hea dfkhasdfh iaudf ron
+ * @alias_list: arrfj asdf kalsdfhal hea dfkhasdfh iaudf es.
  */
 typedef struct info
 {
@@ -43,9 +43,9 @@ typedef struct info
 } data_of_program;
 
 /**
- * struct builtins - struct for the builtins
- * @builtin: the name of the builtin
- * @function: the associated function to be called for each builtin
+ * struct builtins - stfj asdf kalsdfhal hea dfkhasdfh iaudf ns
+ * @builtin: the fj asdf kalsdfhal hea dfkhasdfh iaudf n
+ * @function: the fj asdf kalsdfhal hea dfkhasdfh iaudf ltin
  */
 typedef struct builtins
 {
@@ -54,196 +54,196 @@ typedef struct builtins
 } builtins;
 
 
-/************* MAIN FUNCTIONS *************/
+/**************************************************** MAIN FUNCTIONS *********************************************/
 
 
-/*========  shell.c  ========*/
+/*================================================  shell.c  ================================================*/
 
-/* Inicialize the struct with the info of the program */
+/* Inicifj asdf kalsdfhal hea dfkhasdfh iaudf ogram */
 void inicialize_data(data_of_program *data, int arc, char *argv[], char **env);
 
-/* Makes the infinite loop that shows the prompt*/
+/* Makfj asdf kalsdfhal hea dfkhasdfh iaudf mpt*/
 void sisifo(char *prompt, data_of_program *data);
 
 /* Print the prompt in a new line */
 void handle_ctrl_c(int opr UNUSED);
 
 
-/*========  _getline.c  ========*/
+/*================================================  _getline.c  ========================================*/
 
-/* Read one line of the standar input*/
+/* Raskj fsljd fka sdflkadf lak dfkasdh fput*/
 int _getline(data_of_program *data);
 
-/* split the each line for the logical operators if it exist */
+/* spla heoaphvaasdhf aalsd  la ad aldflast */
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
 
 
-/*======== expansions.c ========*/
+/*================================================ expansions.c ========================================*/
 
-/* expand variables */
+/* e alksdfkhaliksdhfa hdlfhasld halskd ka dkas dfkasdlk f ad s */
 void expand_variables(data_of_program *data);
 
-/* expand aliases */
+/* e klasdk faklsdh flkasd flkahsd lkasd fas d lkf haklsdf a */
 void expand_alias(data_of_program *data);
 
-/* append the string to the end of the buffer*/
+/* ap aksdhfj asdkf aks df aksd faksdf lasd flas dfla sdflas dfklasdr*/
 int buffer_add(char *buffer, char *str_to_add);
 
 
-/*======== str_tok.c ========*/
+/*================================================ str_tok.c ========================================*/
 
-/* Separate the string in tokens using a designed delimiter */
+/* Sep askdgfag sdfa sdgkfasdj fjas dkfa kfhgas kdfhg asjhdgfg asjd ter */
 void tokenize(data_of_program *data);
 
-/* Creates a pointer to a part of a string */
+/* Cra glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajksdfng */
 char *_strtok(char *line, char *delim);
 
 
-/*======== execute.c ========*/
+/*================================================ execute.c ========================================*/
 
 /* Execute a command with its entire path */
 int execute(data_of_program *data);
 
 
-/*======== builtins_list.c ========*/
+/*================================================ builtins_list.c ================================*/
 
-/* If match a builtin, executes it */
+/* If glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkit */
 int builtins_list(data_of_program *data);
 
 
-/*======== find_in_path.c ========*/
+/*================================================ find_in_path.c ========================================*/
 
-/* Creates an array of the path directories */
+/* Crfj asdf kalsdfhal hea dfkhasdfh iaudf es */
 char **tokenize_path(data_of_program *data);
 
-/* Search for program in path */
+/* S glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkth */
 int find_program(data_of_program *data);
 
 
-/************** HELPERS FOR MEMORY MANAGEMENT **************/
+/***************************************************** HELPERS FOR MEMORY MANAGEMENT ***************************/
 
 
-/*======== helpers_free.c ========*/
+/*================================================ helpers_free.c ========================================*/
 
-/* Frees the memory for directories */
+/* Fr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkes */
 void free_array_of_pointers(char **directories);
 
-/* Free the fields needed each loop */
+/* Fr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk loop */
 void free_recurrent_data(data_of_program *data);
 
-/* Free all field of the data */
+/* Fr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkta */
 void free_all_data(data_of_program *data);
 
 
-/************** BUILTINS **************/
+/************************************************* BUILTINS ***************************************/
 
 
-/*======== builtins_more.c ========*/
+/*======================================== builtins_more.c ================================================*/
 
-/* Close the shell */
+/*  glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkl */
 int builtin_exit(data_of_program *data);
 
-/* Change the current directory */
+/* Ch glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajktory */
 int builtin_cd(data_of_program *data);
 
-/* set the work directory */
+/* se glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkory */
 int set_work_directory(data_of_program *data, char *new_dir);
 
-/* show help information */
+/* sho glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajktion */
 int builtin_help(data_of_program *data);
 
-/* set, unset and show alias */
+/* s glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkias */
 int builtin_alias(data_of_program *data);
 
 
-/*======== builtins_env.c ========*/
+/*================================================ builtins_env.c ========================================*/
 
-/* Shows the environment where the shell runs */
+/* Show glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk runs */
 int builtin_env(data_of_program *data);
 
-/* create or override a variable of environment */
+/* cr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkonment */
 int builtin_set_env(data_of_program *data);
 
-/* delete a variable of environment */
+/* d glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkment */
 int builtin_unset_env(data_of_program *data);
 
 
-/************** HELPERS FOR ENVIRONMENT VARIABLES MANAGEMENT **************/
+/************************************** HELPERS FOR ENVIRONMENT VARIABLES MANAGEMENT ***************************/
 
 
-/*======== env_management.c ========*/
+/*======================================== env_management.c ================================*/
 
-/* Gets the value of an environment variable */
+/* Get glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkble */
 char *env_get_key(char *name, data_of_program *data);
 
-/* Overwrite the value of the environment variable */
+/* Over glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajkriable */
 int env_set_key(char *key, char *value, data_of_program *data);
 
-/* Remove a key from the environment */
+/* Re glksgefiagewada df asdjkf kjadfads fs dkas das kasdfaj konment */
 int env_remove_key(char *key, data_of_program *data);
 
-/* prints the current environ */
+/* pr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ron */
 void print_environ(data_of_program *data);
 
 
-/************** HELPERS FOR PRINTING **************/
+/**************************************** HELPERS FOR PRINTING ****************************************/
 
 
-/*======== helpers_print.c ========*/
+/*======================================== helpers_print.c ================================*/
 
-/* Prints a string in the standar output */
+/* Pr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk tput */
 int _print(char *string);
 
-/* Prints a string in the standar error */
+/* Pr glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ror */
 int _printe(char *string);
 
-/* Prints a string in the standar error */
+/* Pri glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ror */
 int _print_error(int errorcode, data_of_program *data);
 
 
-/************** HELPERS FOR STRINGS MANAGEMENT **************/
+/**************************************** HELPERS FOR STRINGS MANAGEMENT ***************************/
 
 
-/*======== helpers_string.c ========*/
+/*======================================== helpers_string.c =====================================*/
 
-/* Counts the number of characters of a string */
+/* Co glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ring */
 int str_length(char *string);
 
-/* Duplicates an string */
+/* Du glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ng */
 char *str_duplicate(char *string);
 
-/* Compares two strings */
+/* Co glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ngs */
 int str_compare(char *string1, char *string2, int number);
 
-/* Concatenates two strings */
+/* Co glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ngs */
 char *str_concat(char *string1, char *string2);
 
-/* Reverse a string */
+/*  glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ng */
 void str_reverse(char *string);
 
 
-/*======== helpers_numbers.c ========*/
+/*======================== helpers_numbers.c ================================*/
 
-/* Cast from int to string */
+/* C glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ing */
 void long_to_string(long number, char *string, int base);
 
-/* convert an string in to a number */
+/* c glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk mber */
 int _atoi(char *s);
 
-/* count the coincidences of character in string */
+/* co glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk ring */
 int count_characters(char *string, char *character);
 
 
-/*======== alias_management.c ========*/
+/*================================ alias_management.c ================================*/
 
-/* print the list of alias */
+/* p glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk as */
 int print_alias(data_of_program *data, char *alias);
 
-/* get the alias name */
+/* ge glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk me */
 char *get_alias(data_of_program *data, char *alias);
 
-/* set the alias name */
+/* s glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajke */
 int set_alias(char *alias_string, data_of_program *data);
 
 
-#endif /* SHELL_H */
+#endif /* S glksgefiagewada df asdjkf kjadfads fs dkas das kasdfajk */
