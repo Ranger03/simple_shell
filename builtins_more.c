@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * builtin_exit - exit of the program with the status
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_exit - ed fghjdfg hsf hsfgdh sfds
+ * @data: ss dfgh sghdfgjdf ghsa
+ * Return: ze dfgj fgshs dftgh autjaghs fdgents
  */
 int builtin_exit(data_of_program *data)
 {
 	int i;
 
 	if (data->tokens[1] != NULL)
-	{/*if exists arg for exit, check if is a number*/
+	{/*isgh s gfhsdfgjsdgf hsmber*/
 		for (i = 0; data->tokens[1][i]; i++)
 			if ((data->tokens[1][i] < '0' || data->tokens[1][i] > '9')
 				&& data->tokens[1][i] != '+')
-			{/*if is not a number*/
+			{/*i dfgjs fg hser*/
 				errno = 2;
 				return (2);
 			}
@@ -25,9 +25,9 @@ int builtin_exit(data_of_program *data)
 }
 
 /**
- * builtin_cd - change the current directory
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_cd - csgh sgj sfgh fsdgry
+ * @data: st hsgfjs ghs fdghta
+ * Return: zesghsdf gjs fdghsdfh sdfgh fgh nts
  */
 int builtin_cd(data_of_program *data)
 {
@@ -63,10 +63,10 @@ int builtin_cd(data_of_program *data)
 }
 
 /**
- * set_work_directory - set the work directory
- * @data: struct for the program's data
- * @new_dir: path to be set as work directory
- * Return: zero if sucess, or other number if its declared in the arguments
+ * set_work_directory - ss fgdjdhf jsfg hsory
+ * @data: sts gfjfhg g gfdhd fgta
+ * @new_dir: p sdfgjdfg sdfgh dfghjd gfory
+ * Return: ze fgjdfhgjs fgh sghj dfg dfhgj nts
  */
 int set_work_directory(data_of_program *data, char *new_dir)
 {
@@ -90,9 +90,9 @@ int set_work_directory(data_of_program *data, char *new_dir)
 }
 
 /**
- * builtin_help - shows the environment where the shell runs
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_help - sh dfgjsdfg hfg fdgh dfgh fgl runs
+ * @data: str dfgjdf ghfdhdfgh dfhga
+ * Return: ze dfgj dfgh dfgj dfg dfhgj ments
  */
 int builtin_help(data_of_program *data)
 {
@@ -121,7 +121,7 @@ int builtin_help(data_of_program *data)
 
 	for (i = 0; mensajes[i]; i++)
 	{
-		/*print the length of string */
+		/*p gfdjdfg hdfg df jdfg ing */
 		length = str_length(data->tokens[1]);
 		if (str_compare(data->tokens[1], mensajes[i], length))
 		{
@@ -129,27 +129,27 @@ int builtin_help(data_of_program *data)
 			return (1);
 		}
 	}
-	/*if there is no match, print error and return -1 */
+	/*if gdjdfhgj dfg dfgj dfg fgn -1 */
 	errno = EINVAL;
 	perror(data->command_name);
 	return (0);
 }
 
 /**
- * builtin_alias - add, remove or show aliases
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * builtin_alias -  dfgjdfg dfghj dfghd es
+ * @data: stdf gjdfg hg hdfg jkdfg fga
+ * Return: zdfg jdf jdfg dfgjdfg jdf gents
  */
 int builtin_alias(data_of_program *data)
 {
 	int i = 0;
 
-	/* if there are no arguments, print all environment */
+	/* if th dfgjksdfg hfdghjsdfg hnment */
 	if (data->tokens[1] == NULL)
 		return (print_alias(data, NULL));
 
 	while (data->tokens[++i])
-	{/* if there are arguments, set or print each env variable*/
+	{/* if dfg jdsfg hgdhfjdfg fgfd riable*/
 		if (count_characters(data->tokens[i], "="))
 			set_alias(data->tokens[i], data);
 		else
