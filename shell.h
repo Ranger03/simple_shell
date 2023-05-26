@@ -75,7 +75,7 @@ void handle_ctrl_c(int opr UNUSED);
 int _getline(data_of_program *data);
 
 /* asjdf hfasdh asdfh ajkshdf aksjdalsdfalksdf as */
-int check_logic_ops(char *array_commands[], int i, char array_operators[]);
+int check_logic_ops(char *arry_coms[], int i, char arry_ops[]);
 
 
 /*======================================= expansions.c ======================================*/
