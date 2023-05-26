@@ -1,34 +1,34 @@
 #include "shell.h"
 /**
- * main - iaad a sdfasjdkalkasdf ram
- * @argc: num ajsdh alsdf alsdjfaksd asdjh adfa sd ine
- * @argv: valuum ajsdh alsdf alsdjfaksd asdjh adfa sd ine ne
- * @env: numum ajsdh alsdf alsdjfaksd asdjh adfa sd ine line
- * Return: zum ajsdh alsdf alsdjfaksd asdjh adfa sd ines.
+ * main - initialize the variables of the program
+ * @argc: number of values received from the command line
+ * @argv: values received from the command line
+ * @env: number of values received from the command line
+ * Return: zero on succes.
  */
 int main(int argc, char *argv[], char *env[])
 {
 	data_of_program data_struct = {NULL}, *data = &data_struct;
-	char *bromuk = "";
+	char *prompt = "";
 
 	inicialize_data(data, argc, argv, env);
 
 	signal(SIGINT, handle_ctrl_c);
 
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
-	{/* Wum ajsdh alsdf alsdjfaksd asdjh adfa sd ine de */
+	{/* We are in the terminal, interactive mode */
 		errno = 2;/*???????*/
-		bromuk = PROMPT_MSG;
+		prompt = PROMPT_MSG;
 	}
 	errno = 0;
-	sisifo(bromuk, data);
+	sisifo(prompt, data);
 	return (0);
 }
 
 /**
- * handle_ctrl_c - prum ajsdh alsdf alsdjfaksd asdjh adfa sd ine e
- * whe num ajsdh alsdf alsdjfaksd asdjh adfa sd ine ogram
- * @UNUSED: opum ajsdh alsdf alsdjfaksd asdjh adfa sd ine pe
+ * handle_ctrl_c - print the prompt in a new line
+ * when the signal SIGINT (ctrl + c) is send to the program
+ * @UNUSED: option of the prototype
  */
 void handle_ctrl_c(int opr UNUSED)
 {
@@ -37,11 +37,11 @@ void handle_ctrl_c(int opr UNUSED)
 }
 
 /**
- * inicialize_data - inum ajsdh alsdf alsdjfaksd asdjh adfa sd ine gram
- * @data: poium ajsdh alsdf alsdjfaksd asdjh adfa sd ine ta
- * @argv: arrum ajsdh alsdf alsdjfaksd asdjh adfa sd ine ution
- * @env: envum ajsdh alsdf alsdjfaksd asdjh adfa sd ine tion
- * @argc: nuum ajsdh alsdf alsdjfaksd asdjh adfa sd ine and line
+ * inicialize_data - inicialize the struct with the info of the program
+ * @data: pointer to the structure of data
+ * @argv: array of arguments pased to the program execution
+ * @env: environ pased to the program execution
+ * @argc: number of values received from the command line
  */
 void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 {
@@ -51,7 +51,7 @@ void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 	data->input_line = NULL;
 	data->command_name = NULL;
 	data->exec_counter = 0;
-	/* defum ajsdh alsdf alsdjfaksd asdjh adfa sd ine d*/
+	/* define the file descriptor to be readed*/
 	if (argc == 1)
 		data->file_descriptor = STDIN_FILENO;
 	else
@@ -85,34 +85,34 @@ void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 	}
 }
 /**
- * sisifo - um ajsdh alsdf alsdjfaksd asdjh adfa sd ine ompt
- * @prompt: pum ajsdh alsdf alsdjfaksd asdjh adfa sd ine ed
- * @data: itum ajsdh alsdf alsdjfaksd asdjh adfa sd ine ompt
+ * sisifo - its a infinite loop that shows the prompt
+ * @prompt: prompt to be printed
+ * @data: its a infinite loop that shows the prompt
  */
-void sisifo(char *bromuk, data_of_program *data)
+void sisifo(char *prompt, data_of_program *data)
 {
-	int miss_mode = 0, strgs_lenght = 0;
+	int error_code = 0, string_len = 0;
 
 	while (++(data->exec_counter))
 	{
-		_print(bromuk);
-		miss_mode = strgs_lenght = _getline(data);
+		_print(prompt);
+		error_code = string_len = _getline(data);
 
-		if (miss_mode == EOF)
+		if (error_code == EOF)
 		{
 			free_all_data(data);
-			exit(errno); /* ium ajsdh alsdf alsdjfaksd asdjh adfa sd inet */
+			exit(errno); /* if EOF is the fisrt Char of string, exit*/
 		}
-		if (strgs_lenght >= 1)
+		if (string_len >= 1)
 		{
 			expand_alias(data);
 			expand_variables(data);
 			tokenize(data);
 			if (data->tokens[0])
-			{ /* ium ajsdh alsdf alsdjfaksd asdjh adfa sd ine ute */
-				miss_mode = execute(data);
-				if (miss_mode != 0)
-					_print_error(miss_mode, data);
+			{ /* if a text is given to prompt, execute */
+				error_code = execute(data);
+				if (error_code != 0)
+					_print_error(error_code, data);
 			}
 			free_recurrent_data(data);
 		}
