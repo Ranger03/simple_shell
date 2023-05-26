@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * builtins_list - search for match and execute the associate builtin
- * @data: struct for the program's data
- * Return: Returns the return of the function executed is there is a match,
+ * builtins_list - s sgjd sgh sfdg dfghjdsf htin
+ * @data: s shgfj sghsf ghjsg ha
+ * Return: Reg hsgfjs fgjsfgj sfdg gtch,
  * otherwise returns -1.
  **/
 int builtins_list(data_of_program *data)
@@ -20,16 +20,16 @@ int builtins_list(data_of_program *data)
 		{NULL, NULL}
 	};
 
-/*walk through the structure*/
+/*was gj jsfgjsdf gjdfgre*/
 	for (iterator = 0; options[iterator].builtin != NULL; iterator++)
 	{
-/*if there is a match between the given command and a builtin,*/
+/*i sghj sdfghsg fdhdfg hjfgh dfg fghin,*/
 		if (str_compare(options[iterator].builtin, data->command_name, 0))
 		{
-/*execute the function, and return the return value of the function*/
+/*exe dfgjsfghs gfg hsdf ghsdfghstion*/
 			return (options[iterator].function(data));
 		}
-/*if there is no match return -1 */
+/*is ghdfg jsfgdh sdfgrn -1 */
 	}
 	return (-1);
 }
