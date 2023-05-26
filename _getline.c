@@ -1,50 +1,50 @@
 #include "shell.h"
 
 /**
-* _getline - asdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldkf.
-* @data: strasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasld
+* _getline - read one line from the prompt.
+* @data: struct for the program's data
 *
-* Return: rasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldes.
+* Return: reading counting bytes.
 */
 int _getline(data_of_program *data)
 {
 	char buff[BUFFER_SIZE] = {'\0'};
-	static char *arry_coms[10] = {NULL};
-	static char arry_ops[10] = {'\0'};
-	ssize_t bin_red, i = 0;
+	static char *array_commands[10] = {NULL};
+	static char array_operators[10] = {'\0'};
+	ssize_t bytes_read, i = 0;
 
-	/* casdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasld */
-	/* anasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd faslds */
-	if (!arry_coms[0] || (arry_ops[0] == '&' && errno != 0) ||
-		(arry_ops[0] == '|' && errno == 0))
+	/* check if doesnot exist more commands in the array */
+	/* and checks the logical operators */
+	if (!array_commands[0] || (array_operators[0] == '&' && errno != 0) ||
+		(array_operators[0] == '|' && errno == 0))
 	{
-		/*frasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldexists */
-		for (i = 0; arry_coms[i]; i++)
+		/*free the memory allocated in the array if it exists */
+		for (i = 0; array_commands[i]; i++)
 		{
-			free(arry_coms[i]);
-			arry_coms[i] = NULL;
+			free(array_commands[i]);
+			array_commands[i] = NULL;
 		}
 
-		/* rasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldbuff */
-		bin_red = read(data->file_descriptor, &buff, BUFFER_SIZE - 1);
-		if (bin_red == 0)
+		/* read from the file descriptor int to buff */
+		bytes_read = read(data->file_descriptor, &buff, BUFFER_SIZE - 1);
+		if (bytes_read == 0)
 			return (-1);
 
-		/* sasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldor ; */
+		/* split lines for \n or ; */
 		i = 0;
 		do {
-			arry_coms[i] = str_duplicate(_strtok(i ? NULL : buff, "\n;"));
-			/*chasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd faslderators*/
-			i = check_logic_ops(arry_coms, i, arry_ops);
-		} while (arry_coms[i++]);
+			array_commands[i] = str_duplicate(_strtok(i ? NULL : buff, "\n;"));
+			/*checks and split for && and || operators*/
+			i = check_logic_ops(array_commands, i, array_operators);
+		} while (array_commands[i++]);
 	}
 
-	/*obtaasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldrray*/
-	data->input_line = arry_coms[0];
-	for (i = 0; arry_coms[i]; i++)
+	/*obtains the next command (command 0) and remove it for the array*/
+	data->input_line = array_commands[0];
+	for (i = 0; array_commands[i]; i++)
 	{
-		arry_coms[i] = arry_coms[i + 1];
-		arry_ops[i] = arry_ops[i + 1];
+		array_commands[i] = array_commands[i + 1];
+		array_operators[i] = array_operators[i + 1];
 	}
 
 	return (str_length(data->input_line));
@@ -52,42 +52,42 @@ int _getline(data_of_program *data)
 
 
 /**
-* check_logic_ops - cheasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldrs
-* @array_commands: arrasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldds.
-* @i: inasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldecked
-* @array_operators: aasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldommand
+* check_logic_ops - checks and split for && and || operators
+* @array_commands: array of the commands.
+* @i: index in the array_commands to be checked
+* @array_operators: array of the logical operators for each previous command
 *
-* Return: indasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldnds.
+* Return: index of the last command in the array_commands.
 */
-int check_logic_ops(char *arry_coms[], int i, char arry_ops[])
+int check_logic_ops(char *array_commands[], int i, char array_operators[])
 {
 	char *temp = NULL;
-	int k;
+	int j;
 
-	/* casdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldne*/
-	for (k = 0; arry_coms[i] != NULL  && arry_coms[i][k]; k++)
+	/* checks for the & char in the command line*/
+	for (j = 0; array_commands[i] != NULL  && array_commands[i][j]; j++)
 	{
-		if (arry_coms[i][k] == '&' && arry_coms[i][k + 1] == '&')
+		if (array_commands[i][j] == '&' && array_commands[i][j + 1] == '&')
 		{
-			/* splasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasldd */
-			temp = arry_coms[i];
-			arry_coms[i][k] = '\0';
-			arry_coms[i] = str_duplicate(arry_coms[i]);
-			arry_coms[i + 1] = str_duplicate(temp + k + 2);
+			/* split the line when chars && was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_duplicate(array_commands[i]);
+			array_commands[i + 1] = str_duplicate(temp + j + 2);
 			i++;
-			arry_ops[i] = '&';
+			array_operators[i] = '&';
 			free(temp);
-			k = 0;
+			j = 0;
 		}
-		if (arry_coms[i][k] == '|' && arry_coms[i][k + 1] == '|')
+		if (array_commands[i][j] == '|' && array_commands[i][j + 1] == '|')
 		{
-			/* spasdkfhjgaksd fakjsdg asdgf asdhlas dlfalsk dfalksdfla ksd kasdhf lajsdhahs dlahsd fasld nd */
-			temp = arry_coms[i];
-			arry_coms[i][k] = '\0';
-			arry_coms[i] = str_duplicate(array_commands[i]);
-			arry_coms[i + 1] = str_duplicate(temp + j + 2);
+			/* split the line when chars || was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_duplicate(array_commands[i]);
+			array_commands[i + 1] = str_duplicate(temp + j + 2);
 			i++;
-			arry_ops[i] = '|';
+			array_operators[i] = '|';
 			free(temp);
 			j = 0;
 		}
